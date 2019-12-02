@@ -1,0 +1,29 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- develop
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: Docker@1
+  displayName: 'Build an image'
+  inputs:
+    azureSubscriptionEndpoint: 'Azure for Students (33a4bf0c-53b0-4393-a842-8277f2651a39)'
+    azureContainerRegistry: learningas.azurecr.io
+    dockerFile: app/Dockerfile
+    imageName: learningas.azurecr.io/learningdockerbuild
+    includeLatestTag: true
+
+- task: Docker@1
+  displayName: push
+  inputs:
+    azureSubscriptionEndpoint: 'Azure for Students (33a4bf0c-53b0-4393-a842-8277f2651a39)'
+    azureContainerRegistry: learningas.azurecr.io
+    command: push
+    imageName: learningas.azurecr.io/learningdockerbuild
+

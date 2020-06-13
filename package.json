@@ -1,13 +1,11 @@
+
 {
-  "name": "my_app",
+  "name": "helloworld",
   "version": "1.0.0",
-  "description": "Sample used for container templates",
-  "author": "Shashank Barsin",
+  "description": "Sample app for Learning",
   "main": "server.js",
   "scripts": {
     "start": "node ./src/server.js"
   },
-  "dependencies": {
-    "express": "^4.16.4"
-  }
+  "license": "MIT"
 }

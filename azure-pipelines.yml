@@ -15,7 +15,7 @@ steps:
   inputs:
     azureSubscriptionEndpoint: 'Azure for Students (33a4bf0c-53b0-4393-a842-8277f2651a39)'
     azureContainerRegistry: learningas.azurecr.io
-    dockerFile: app/Dockerfile
+    dockerFile: Dockerfile
     imageName: learningas.azurecr.io/learningdockerbuild
     includeLatestTag: true
 

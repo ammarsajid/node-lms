@@ -23,4 +23,4 @@ jobs:
     # build a docker image from Dockerfile
     - name: docker build
       run: |
-        docker build ./Dockerfile -t ammarsajid/node-lms:latest
+        docker build .

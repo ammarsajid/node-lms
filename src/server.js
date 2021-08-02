@@ -1,13 +1,27 @@
-const http = require('http')
+var express = require('express');
+var app = express();
+var port = process.env.PORT || 3000
+const git = require("git-rev-sync");
 
-const port = 8080
-
-const server = http.createServer((request, response) => {
-  response.writeHead(200, {'Content-Type': 'text/plain'})
-  response.write('Hello World\n')
-  response.end()
+// This responds a GET request for the /version page.
+app.get('/version', function (req, res) {
+  console.log("Got a GET request for /version");
+  res.json(
+    {
+      myapplication: [
+        {
+          version: process.env.npm_package_version,
+          lastcommitsha: git.short(),
+          description: "pre-interview technical test"
+        }
+    ]
+  });
 })
 
-server.listen(port)
 
-console.log(`Server running at http://localhost: ${port}`)
+var server = app.listen(port, function () {
+   var host = server.address().address
+   var port = server.address().port
+   
+   console.log("Example app listening at http://%s:%s", host, port)
+})
